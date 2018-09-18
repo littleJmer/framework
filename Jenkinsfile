@@ -143,11 +143,11 @@ def notifyBuild(String buildStatus = 'STARTED', String notifyTo) {
 
     /* hipchatSend (color: color, notify: true, message: summary) */
 
-    emailext (
+    /* emailext (
         subject: subject,
         body: details,
         to: notifyTo
-    )
+    ) */
 
 }
 
