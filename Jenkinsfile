@@ -31,8 +31,16 @@ node {
             checkout scm
             
             /* Get commit hash */
-            COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
+            /* COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7) */
             
+        }
+
+        stage('Composer') {
+            sh "composer install"
+        }
+
+        stage('PHPunit') {
+            sh "vendor/bin/phpunit"
         }
 
         stage('Build Image') {
@@ -54,10 +62,6 @@ node {
             /* IMAGE.inside {
                 sh 'echo "Tests passed"'
             } */
-            
-            sh "composer install"
-            
-            sh "vendor/bin/phpunit"
             
         }
 
