@@ -55,6 +55,10 @@ node {
                 sh 'echo "Tests passed"'
             } */
             
+            sh "composer install"
+            
+            sh "vendor/bin/phpunit"
+            
         }
 
         stage('Push Images') {
